@@ -1,13 +1,194 @@
+/* General resets and box-sizing */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Base styling for body and html */
+body, html {
+  font-family: 'Poppins', sans-serif;
+  height: 100%;
+  overflow: hidden;
+  color: #333;
+}
+
+/* Main container */
 #main {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
 }
 
-#github-container {
+/* Header styling */
+header {
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+}
+
+/* Form styling */
+#github-form {
   display: flex;
+  justify-content: center;
+  gap: 15px; /* Increased gap for better spacing */
+  max-width: 700px; /* Increased max-width */
+  margin: 0 auto;
+  position: relative;
 }
 
-ul {
+/* Search input styling with animation and increased size */
+#search {
+  flex-grow: 1;
+  padding: 15px 25px; /* Increased padding for larger input */
+  font-size: 1.2rem; /* Larger font size */
+  border-radius: 30px; /* Larger border-radius for a more rounded look */
+  border: none;
+  outline: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#search:focus {
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+  transform: scale(1.03);
+}
+
+/* Search button styling with animation and increased size */
+button[type='submit'] {
+  padding: 15px 30px; /* Increased padding for a larger button */
+  font-size: 1.2rem; /* Larger font size */
+  font-weight: 700; /* Bolder font weight */
+  color: #fff;
+  background-color: #E32227;
+  border: none;
+  border-radius: 30px; /* Larger border-radius */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button[type='submit']:hover {
+  background-color: #FF2400;
+  transform: scale(1.1);
+}
+
+button[type='submit']:active {
+  transform: scale(0.98);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Results container styling */
+#results-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+/* GitHub container styling */
+#github-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* List styling */
+#user-list, #repos-list {
   list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Card styling with animations */
+.user-item, .repo-item {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.user-item:hover, .repo-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.user-item:active, .repo-item:active {
+  transform: translateY(-4px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for images within cards */
+.user-item img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+/* Styling for headers within cards */
+.user-item h3, .repo-item h3 {
+  margin-bottom: 10px;
+  color: #2575fc;
+}
+
+/* Styling for links within cards */
+.user-item a, .repo-item a {
+  color: #6a11cb;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Styling for description text within cards */
+.repo-item p {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Scrollbar styling */
+#results-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+#results-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+#results-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+#results-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  #github-form {
+    flex-direction: column;
+  }
+
+  #search, button[type='submit'] {
+    width: 100%;
+  }
+
+  #user-list, #repos-list {
+    grid-template-columns: 1fr;
+  }
 }
